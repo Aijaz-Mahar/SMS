@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b9044daa-1303-48bc-9bc6-5cc8ed7ad1bd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<subDataset name="Table Dataset 1" uuid="0e46b96c-391b-44bf-a2a8-1ee69d9e562a"/>
+	<queryString>
+		<![CDATA[select s.schoolname,s.address,s.logo,b.bankid,b.bankname,b.branchname,
+b.contactno,b.banklogo,b.banklogo as blogo,s.logo as slogo,
+b.bankaccount,m.challanid,m.grno,m.classid,m.sessionyear,m.categoryid,m.issuedate,
+m.duedate,m.monthof,m.yearof,m.feesid,m.amount,a.fullname,a.fathername
+ from masterchallan m,bank b,school s,addmissionform a
+where m.bankid=b.bankid and s.sid=m.sid and m.grno=a.grno]]>
+	</queryString>
+	<field name="SCHOOLNAME" class="java.lang.String"/>
+	<field name="ADDRESS" class="java.lang.String"/>
+	<field name="LOGO" class="java.io.InputStream"/>
+	<field name="BANKID" class="java.lang.String"/>
+	<field name="BANKNAME" class="java.lang.String"/>
+	<field name="BRANCHNAME" class="java.lang.String"/>
+	<field name="CONTACTNO" class="java.lang.String"/>
+	<field name="BANKLOGO" class="java.io.InputStream"/>
+	<field name="BLOGO" class="java.io.InputStream"/>
+	<field name="SLOGO" class="java.io.InputStream"/>
+	<field name="BANKACCOUNT" class="java.math.BigDecimal"/>
+	<field name="CHALLANID" class="java.math.BigDecimal"/>
+	<field name="GRNO" class="java.lang.String"/>
+	<field name="CLASSID" class="java.lang.String"/>
+	<field name="SESSIONYEAR" class="java.lang.String"/>
+	<field name="CATEGORYID" class="java.lang.String"/>
+	<field name="ISSUEDATE" class="java.sql.Timestamp"/>
+	<field name="DUEDATE" class="java.sql.Timestamp"/>
+	<field name="MONTHOF" class="java.lang.String"/>
+	<field name="YEAROF" class="java.lang.String"/>
+	<field name="FEESID" class="java.lang.String"/>
+	<field name="AMOUNT" class="java.math.BigDecimal"/>
+	<field name="FULLNAME" class="java.lang.String"/>
+	<field name="FATHERNAME" class="java.lang.String"/>
+	<group name="Challanid_group" isStartNewPage="true" keepTogether="true">
+		<groupExpression><![CDATA[$F{CHALLANID}]]></groupExpression>
+		<groupHeader>
+			<band height="117">
+				<textField>
+					<reportElement x="14" y="73" width="100" height="20" uuid="989eb579-4998-4bc9-9ace-26b5752aac54"/>
+					<textFieldExpression><![CDATA[$F{FULLNAME}]]></textFieldExpression>
+				</textField>
+				<image scaleImage="FillFrame">
+					<reportElement x="25" y="0" width="55" height="50" uuid="415a779d-29f3-4286-b562-81d06e8eaace"/>
+					<imageExpression><![CDATA[$F{LOGO}]]></imageExpression>
+				</image>
+				<image scaleImage="FillFrame">
+					<reportElement x="403" y="0" width="62" height="50" uuid="aa4f0929-e8df-4e34-a11b-386f112e535d"/>
+					<imageExpression><![CDATA[$F{SLOGO}]]></imageExpression>
+				</image>
+				<image scaleImage="FillFrame">
+					<reportElement x="213" y="0" width="55" height="50" uuid="997c6894-a539-42c8-8555-a2366e5695e2"/>
+					<imageExpression><![CDATA[$F{BANKLOGO}]]></imageExpression>
+				</image>
+				<image scaleImage="FillFrame">
+					<reportElement x="550" y="0" width="55" height="50" uuid="97bbeea6-3b05-44ca-afdf-0d2cda10adfa"/>
+					<imageExpression><![CDATA[$F{BLOGO}]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement x="96" y="30" width="100" height="20" uuid="f277d118-a07e-4196-8688-6fe9e5d574ff"/>
+					<textFieldExpression><![CDATA[$F{SCHOOLNAME}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="289" y="30" width="100" height="20" uuid="8d1eae04-9cdb-45b5-bf39-6cbc07fc9479"/>
+					<textFieldExpression><![CDATA[$F{SCHOOLNAME}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="112" y="10" width="100" height="20" uuid="28db622a-7f4a-4c9a-a5bd-7b87fc844e38"/>
+					<textFieldExpression><![CDATA[$F{BANKNAME}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="321" y="13" width="100" height="20" uuid="cc1b3568-9d2f-4961-9659-95c81257a9f0"/>
+					<textFieldExpression><![CDATA[$F{BANKNAME}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="103"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="24" splitType="Stretch"/>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

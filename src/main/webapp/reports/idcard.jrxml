@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null"  pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f07e98a7-e860-4c55-96c4-2564b0b00cbc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="psession" class="java.lang.String"/>
+	<parameter name="pclass" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select s.grno,s.rollnumber,s.sessionyear,s.classid,s.section,
+      a.fullname,a.fathername,a.homeaddress,a.mobileno,a.studentpic,
+  sch.schoolname,sch.contactno,sch.logo
+from school sch,addmissionform a,student s
+         where s.grno=a.grno and a.sid=sch.sid
+and s.sessionyear=$P{psession} and s.classid=$P{pclass}]]>
+	</queryString>
+	<field name="GRNO" class="java.lang.String"/>
+	<field name="ROLLNUMBER" class="java.math.BigDecimal"/>
+	<field name="SESSIONYEAR" class="java.lang.String"/>
+	<field name="CLASSID" class="java.lang.String"/>
+	<field name="SECTION" class="java.lang.String"/>
+	<field name="FULLNAME" class="java.lang.String"/>
+	<field name="FATHERNAME" class="java.lang.String"/>
+	<field name="HOMEADDRESS" class="java.lang.String"/>
+	<field name="MOBILENO" class="java.lang.String"/>
+	<field name="STUDENTPIC" class="java.io.InputStream"/>
+	<field name="SCHOOLNAME" class="java.lang.String"/>
+	<field name="CONTACTNO" class="java.lang.String"/>
+	<field name="LOGO" class="java.io.InputStream"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="6" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="7" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="186" splitType="Stretch">
+			<frame>
+				<reportElement x="2" y="0" width="272" height="137" uuid="646bba71-d40f-4fbb-881c-58be3dfac60f"/>
+				<textField>
+					<reportElement x="0" y="0" width="272" height="20" uuid="f096019d-be69-4887-b53c-a03a6a7a76d6"/>
+					<textElement textAlignment="Center">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{SCHOOLNAME}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="96" y="20" width="85" height="16" uuid="978c1fec-eb2c-48a5-b7a5-8303531304cc"/>
+					<textFieldExpression><![CDATA[$F{CONTACTNO}]]></textFieldExpression>
+				</textField>
+				<image>
+					<reportElement x="0" y="20" width="77" height="89" uuid="6b28e126-cbda-4ecb-8409-dbcf308f78d9"/>
+					<imageExpression><![CDATA[$F{STUDENTPIC}]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="96" y="36" width="89" height="20" uuid="6e4b09ca-b5f0-4f95-b7cb-16777d7cc0ca"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[ Student ID Card]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="81" y="59" width="45" height="20" uuid="38325939-fd32-4bb7-9f13-01549d8b1169"/>
+					<textElement>
+						<font size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[GR.No:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="126" y="59" width="66" height="20" uuid="3720be41-b04d-452c-a1c3-e96f1b437e49"/>
+					<textElement>
+						<font size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{GRNO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="81" y="80" width="191" height="20" uuid="e7938c50-3917-4d43-b74f-be4c13b219b2"/>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{FULLNAME}]]></textFieldExpression>
+				</textField>
+				<image>
+					<reportElement x="200" y="20" width="72" height="50" uuid="f19622ec-9948-41cc-984e-5a03a2f8a2c3"/>
+					<imageExpression><![CDATA[$F{LOGO}]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement x="106" y="100" width="29" height="20" uuid="1f1b587a-b990-4fa5-8fea-12ff68be0df0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{CLASSID}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="136" y="101" width="0" height="20" uuid="af870af1-10a7-45bd-9030-7704c3bcb3fe"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[-]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="142" y="100" width="14" height="20" uuid="512a55db-e084-49c0-a9a8-bf635becd51a"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{SECTION}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="278" y="2" width="275" height="135" uuid="a3c571d0-8b17-4b21-afba-5a3a16526576"/>
+				<staticText>
+					<reportElement x="0" y="0" width="77" height="20" uuid="32759275-2601-4d89-b961-bf188cff1e7d"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Father's Name:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="76" y="1" width="198" height="20" uuid="f56accd2-fef2-448e-bbb0-506fc032cb06"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{FATHERNAME}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="1" y="47" width="46" height="20" uuid="42a14630-a953-4acb-af47-05f0d6594f48"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Address:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="47" y="47" width="227" height="20" uuid="b1fd745f-6246-4a19-97c4-cb6c71cfc85d"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{HOMEADDRESS}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="58" y="71" width="114" height="20" uuid="fd0dfcd9-735e-4768-bbe0-9f440cd2b3a0"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{MOBILENO}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="1" y="71" width="57" height="20" uuid="b9fc5ce8-ea10-4f95-85cc-370d6e6b99ef"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Phone No:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="24" width="73" height="20" uuid="b443bd6f-7f98-4fc7-871f-d3f15115ecd3"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Blood Group:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="5" y="97" width="73" height="20" uuid="88f22748-fed4-4a89-a6f3-4101ec23cd3a"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Principal Sign]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="142" y="97" width="59" height="20" uuid="f9b71940-3ce7-444c-972b-eedb3d86f7e4"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Expire Date:]]></text>
+				</staticText>
+				<line>
+					<reportElement x="79" y="114" width="60" height="1" uuid="ba977d44-20fb-4b43-8ac6-228ae7ccc878"/>
+				</line>
+			</frame>
+			<line>
+				<reportElement x="8" y="137" width="544" height="1" uuid="64d35870-aab6-4ebf-9fba-b832b33c68b4"/>
+			</line>
+			<line>
+				<reportElement x="274" y="0" width="1" height="133" uuid="46302555-7070-4e43-8729-a1ef68ea06eb"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="3" splitType="Stretch"/>
+	</summary>
+</jasperReport>

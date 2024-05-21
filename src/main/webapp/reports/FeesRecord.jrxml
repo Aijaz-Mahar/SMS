@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FeesRecord" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="98a07509-742a-43c2-bea1-3c1a67cf4c63">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="e0aaf810-0759-4f43-8184-ba7edfe6b0f0">
+		<parameter name="pgrno" class="java.lang.String"/>
+		<parameter name="pyear" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[select sum(nvl(debit,0))-sum(nvl(credit,0)) as balance from feesrecord
+where grno=$P{pgrno} and yearof=$P{pyear}]]>
+		</queryString>
+		<field name="BALANCE" class="java.math.BigDecimal"/>
+	</subDataset>
+	<parameter name="pgrno" class="java.lang.String"/>
+	<parameter name="pyear" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select challanid,grno,tdate,description,ref,debit,credit as credit from feesRecord
+where grno=$P{pgrno} and yearof=$P{pyear}
+order by challanid,tdate]]>
+	</queryString>
+	<field name="CHALLANID" class="java.math.BigDecimal"/>
+	<field name="GRNO" class="java.lang.String"/>
+	<field name="TDATE" class="java.sql.Timestamp"/>
+	<field name="DESCRIPTION" class="java.lang.String"/>
+	<field name="REF" class="java.lang.String"/>
+	<field name="DEBIT" class="java.math.BigDecimal"/>
+	<field name="CREDIT" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="187" y="0" width="137" height="19" uuid="cf3d7bc2-08b8-4a40-9df1-d5ade42050c7"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fees Record of Year -]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="325" y="0" width="100" height="18" uuid="540b3889-4d9c-4ac6-a6f9-a6ed2f49567e"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pyear}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="200" y="18" width="146" height="20" uuid="aed4f5f5-d3d2-4230-9078-f2c4ea564a7a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="214" y="18" width="42" height="20" uuid="90775948-61d6-45aa-855a-3e68d8ca82c4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[GR NO.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="257" y="18" width="87" height="20" uuid="f24c6497-8f35-4be0-ba9e-17a76ff81c4b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GRNO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="1" width="53" height="16" uuid="d23ba87b-0796-4f89-bb65-346a2e995971"/>
+				<text><![CDATA[DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="1" width="100" height="16" uuid="9baa9700-3c66-4777-9c38-fe3bf3615771"/>
+				<text><![CDATA[DESCRIPTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="0" width="71" height="17" uuid="2c072b38-4331-42de-ac78-dd41931ff285"/>
+				<text><![CDATA[CHALLAN ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="422" y="2" width="63" height="15" uuid="2f7d51d1-4213-40d0-8cdf-0e4d6473247d"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[DUES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="484" y="2" width="71" height="15" uuid="ead67516-4bf4-444a-b917-1c3195145b16"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[RECEIVED]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="17" width="551" height="2" uuid="33ef651e-ab52-40ed-a66d-24f270ab8020"/>
+			</line>
+			<line>
+				<reportElement x="3" y="-2" width="551" height="2" uuid="ddae514b-4e36-4aa2-9f00-bee3191a8cb3"/>
+			</line>
+			<staticText>
+				<reportElement x="306" y="1" width="40" height="17" uuid="c4fd643d-00d0-4d8e-9dbc-7822420fff09"/>
+				<text><![CDATA[MONTH]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField pattern="dd-MMM-yy">
+				<reportElement x="4" y="0" width="52" height="20" uuid="40e61747-2f73-4e02-8b98-3276cf1ff8c6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TDATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="55" y="0" width="239" height="20" uuid="5b462e2e-dccb-4eb4-81cd-32f96bde999e"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DESCRIPTION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="351" y="0" width="72" height="20" uuid="1944524d-6dbe-4776-9b8c-e9c1597b8ff0"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CHALLANID}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="423" y="0" width="61" height="20" uuid="22b05eb7-7c52-4529-aa2c-a1b7f37d769d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DEBIT}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="484" y="0" width="71" height="20" uuid="3baee1cc-af35-45b5-b951-6249e845d05a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CREDIT}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="301" y="0" width="49" height="20" uuid="6b198f93-302c-44a3-a94a-d7662d70cba7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{REF}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="5" y="23" width="550" height="1" uuid="f16ead6d-46be-48bd-969f-32ce1bb7cdda"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="33" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 1" mode="Opaque" x="419" y="4" width="63" height="20" uuid="946afe28-abe4-4e86-a472-8937ded89abc"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="ef7e4728-6d4a-41c8-8f38-cd4a7d8f8182">
+						<datasetParameter name="pgrno">
+							<datasetParameterExpression><![CDATA[$P{pgrno}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pyear">
+							<datasetParameterExpression><![CDATA[$P{pyear}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="e27b7c2c-8cdb-4e0e-8e44-850bd4ec4c74">
+						<jr:detailCell style="table 1_TD" height="20">
+							<box>
+								<pen lineColor="#FFFFFF"/>
+								<topPen lineColor="#FFFFFF"/>
+								<leftPen lineColor="#FFFFFF"/>
+								<bottomPen lineColor="#FFFFFF"/>
+								<rightPen lineColor="#FFFFFF"/>
+							</box>
+							<textField>
+								<reportElement x="0" y="0" width="74" height="20" uuid="00caec4b-1834-4c2f-808a-fcba300c82ef"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isUnderline="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{BALANCE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="345" y="4" width="52" height="20" uuid="a2fa71f3-03a9-4323-ac72-14ef8ab698cd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Balance:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="30" width="550" height="3" uuid="24bc1b3f-22b5-4c20-a344-802703020f98"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

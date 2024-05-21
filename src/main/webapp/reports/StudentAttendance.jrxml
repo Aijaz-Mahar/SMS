@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StudentAttendance"  pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9bbcd2a7-d266-45e6-9522-2e2d1215c024">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="2a10a9c9-87df-454f-8530-f4389c04eed1"/>
+	<subDataset name="TotalDays" uuid="ce434642-704e-40d1-94bd-19fae4d3e806">
+		<parameter name="psession" class="java.lang.String"/>
+		<parameter name="pclass" class="java.lang.String"/>
+		<parameter name="psection" class="java.lang.String"/>
+		<parameter name="pgrno" class="java.lang.String"/>
+		<parameter name="pdatefrom" class="java.lang.String"/>
+		<parameter name="pdateto" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT COUNT(ATTENDANCEDATE) FROM ATTENDANCE WHERE CLASSID=$P{pclass} AND SESSIONYEAR=$P{psession} AND GRNO=$P{pgrno} 
+and attendancedate between $P{pdatefrom} and $P{pdateto}]]>
+		</queryString>
+		<field name="COUNT(ATTENDANCEDATE)" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="PresentDays" uuid="58344920-fee7-4930-aa2a-2c90d01de1af">
+		<parameter name="psession" class="java.lang.String"/>
+		<parameter name="pclass" class="java.lang.String"/>
+		<parameter name="psection" class="java.lang.String"/>
+		<parameter name="pgrno" class="java.lang.String"/>
+		<parameter name="pdatefrom" class="java.lang.String"/>
+		<parameter name="pdateto" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT COUNT(status) FROM ATTENDANCE WHERE  CLASSID=$P{pclass} AND SESSIONYEAR=$P{psession} AND GRNO=$P{pgrno} 
+and attendancedate between $P{pdatefrom} and $P{pdateto} and status='P']]>
+		</queryString>
+		<field name="COUNT(STATUS)" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="AbsentDays" uuid="b6c607c7-93c8-486c-b876-1c91b9f2a6fa">
+		<parameter name="psession" class="java.lang.String"/>
+		<parameter name="pclass" class="java.lang.String"/>
+		<parameter name="psection" class="java.lang.String"/>
+		<parameter name="pgrno" class="java.lang.String"/>
+		<parameter name="pdatefrom" class="java.lang.String"/>
+		<parameter name="pdateto" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT COUNT(status) FROM ATTENDANCE WHERE classid=$P{pclass} AND SESSIONYEAR=$P{psession} AND GRNO=$P{pgrno} 
+and attendancedate between $P{pdatefrom} and $P{pdateto} and status='A']]>
+		</queryString>
+		<field name="COUNT(STATUS)" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="LeaveDays" uuid="157a267a-9f9b-4aeb-bd5f-492c324c2460">
+		<parameter name="psession" class="java.lang.String"/>
+		<parameter name="pclass" class="java.lang.String"/>
+		<parameter name="psection" class="java.lang.String"/>
+		<parameter name="pgrno" class="java.lang.String"/>
+		<parameter name="pdatefrom" class="java.lang.String"/>
+		<parameter name="pdateto" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT COUNT(status) FROM ATTENDANCE WHERE classid=$P{pclass} AND SESSIONYEAR=$P{psession} AND GRNO=$P{pgrno} 
+and attendancedate between $P{pdatefrom} and $P{pdateto} and status='L']]>
+		</queryString>
+		<field name="COUNT(STATUS)" class="java.math.BigDecimal"/>
+	</subDataset>
+	<parameter name="psession" class="java.lang.String"/>
+	<parameter name="pclass" class="java.lang.String"/>
+	<parameter name="psection" class="java.lang.String"/>
+	<parameter name="pgrno" class="java.lang.String"/>
+	<parameter name="pdatefrom" class="java.lang.String"/>
+	<parameter name="pdateto" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select sc.logo,sc.schoolname, s.grno,a.fullname as fullname,a.fathername as fathername,s.classid,s.section,s.sessionyear,a.studentpic,at.attendancedate,at.status,at.remarks 
+from Addmissionform a,student s,attendance at,school sc
+where a.grno=s.grno and s.grno=at.grno  and s.sessionyear=$P{psession} and s.classid=$P{pclass} and s.section=$P{psection} and at.grno=$P{pgrno} and sc.sid=1
+and at.attendancedate between $P{pdatefrom} and $P{pdateto}]]>
+	</queryString>
+	<field name="LOGO" class="java.io.InputStream"/>
+	<field name="SCHOOLNAME" class="java.lang.String"/>
+	<field name="GRNO" class="java.lang.String"/>
+	<field name="FULLNAME" class="java.lang.String"/>
+	<field name="FATHERNAME" class="java.lang.String"/>
+	<field name="CLASSID" class="java.lang.String"/>
+	<field name="SECTION" class="java.lang.String"/>
+	<field name="SESSIONYEAR" class="java.lang.String"/>
+	<field name="STUDENTPIC" class="java.io.InputStream"/>
+	<field name="ATTENDANCEDATE" class="java.sql.Timestamp"/>
+	<field name="STATUS" class="java.lang.String"/>
+	<field name="REMARKS" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="70" y="0" width="405" height="20" uuid="60b5f656-adeb-4645-8d8c-be67dc7aaec9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{SCHOOLNAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="207" y="20" width="143" height="15" uuid="cc3498a0-5e15-4bb1-9d44-02b342bbec00"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Student Attendance Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="37" width="32" height="20" uuid="8f35e0f8-e039-4f0e-8ee0-fd9c47ff4f46"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[From:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="37" width="26" height="20" uuid="89b322b6-c649-4a7e-ba07-63fb8578ce08"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[To:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="207" y="35" width="73" height="20" uuid="d3fdbd3d-a8c7-4480-be76-0d03c7eadd98"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{pdatefrom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="307" y="36" width="100" height="20" uuid="24cf53fc-1465-4a3d-9196-c111abd10dfa"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{pdateto}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="3" y="0" width="36" height="35" uuid="c2136ed7-4355-47f9-80bc-5168c7d40866"/>
+				<imageExpression><![CDATA[$F{LOGO}]]></imageExpression>
+			</image>
+			<image scaleImage="FillFrame">
+				<reportElement x="506" y="0" width="36" height="35" uuid="c2280a4b-726c-4f9f-a4bf-1cf25f15e031"/>
+			<imageExpression><![CDATA[$F{STUDENTPIC}]]></imageExpression>
+                        </image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="55" splitType="Stretch">
+			<textField>
+				<reportElement x="57" y="0" width="99" height="20" uuid="63b4aa47-9a36-460c-b659-e2790d721b99"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SESSIONYEAR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="207" y="0" width="100" height="20" uuid="3c027b4b-6c37-4379-bbc5-d1047a3c0909"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLASSID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="1" width="100" height="20" uuid="ac9a8e4f-7ed7-494a-b66e-91e06e9df5a1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SECTION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="32" width="163" height="20" uuid="eb399570-174b-43c8-8c06-0dbf1c08a532"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FULLNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="32" width="125" height="20" uuid="49521aa7-3e57-43fc-9a83-fd4e040ce8d4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FATHERNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="32" width="100" height="20" uuid="d68f57cf-572b-4053-bad8-ab329c93c70a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GRNO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="56" height="20" uuid="f1616016-46d8-431a-b120-0eb1d798a133"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Session:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="164" y="1" width="43" height="20" uuid="801b9d77-f6e3-4892-b1b8-2aa0442163e3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Class:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="1" width="55" height="20" uuid="20d54037-f432-4761-b925-8f5723bdda05"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Section:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="31" width="37" height="20" uuid="436c0539-0c01-443c-a6c4-b176eb0ee045"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[G.R#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="31" width="37" height="20" uuid="604baf6e-d10b-4ed1-8218-6ce93046951e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="31" width="55" height="20" uuid="7991fa65-1ac7-4913-9b82-259abb8e6882"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[F/Name:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="52" width="553" height="1" uuid="0580b87a-9f05-4781-9cbe-d279baca8ad3"/>
+			</line>
+			<line>
+				<reportElement x="2" y="-6" width="553" height="1" uuid="8d25eeb6-e25d-454c-bdff-c0db3d68161f"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="11" y="2" width="48" height="20" uuid="f7c36b96-8f0b-45b2-9c6f-621731c3f25d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="2" width="100" height="20" uuid="a1d77ab6-1683-4de6-b9d1-984cdd2bffd9"/>
+				<text><![CDATA[STATUS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="366" y="2" width="100" height="20" uuid="e5bf05ff-240a-43ea-913d-3be9949d810a"/>
+				<text><![CDATA[REMARKS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="3" y="24" width="553" height="1" uuid="8de752c3-c7e8-448e-ac8b-41808733d482"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement x="11" y="2" width="100" height="20" uuid="290e8665-e984-4a03-9c63-f8f0512f0d15"/>
+				<textFieldExpression><![CDATA[$F{ATTENDANCEDATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="2" width="100" height="20" uuid="6e6e9028-ddab-4d21-bcf3-4d60e3ce9fa0"/>
+				<textFieldExpression><![CDATA[$F{STATUS}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="366" y="2" width="100" height="20" uuid="38b26abd-777e-49bf-9ff7-0ca31433b8be"/>
+				<textFieldExpression><![CDATA[$F{REMARKS}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="22" width="553" height="1" uuid="7e4c54b5-ec11-43f9-ace9-050153aef27d"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="0" width="54" height="20" uuid="becb4492-5da8-4dd8-9bbb-b3712fb1cf4d"/>
+				<text><![CDATA[Total Days:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="20" width="67" height="20" uuid="f7596c90-c75f-4808-a409-40278fcc4e80"/>
+				<text><![CDATA[Present:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="111" y="0" width="90" height="20" uuid="d92ad204-5a36-4b83-a95c-2bd7f0a166b9"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="TotalDays" uuid="6367669d-79d2-47c9-ab0b-c73856ed21eb">
+						<datasetParameter name="psession">
+							<datasetParameterExpression><![CDATA[$P{psession}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pclass">
+							<datasetParameterExpression><![CDATA[$P{pclass}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="psection">
+							<datasetParameterExpression><![CDATA[$P{pclass}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pgrno">
+							<datasetParameterExpression><![CDATA[$P{pgrno}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pdatefrom">
+							<datasetParameterExpression><![CDATA[$P{pdatefrom}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pdateto">
+							<datasetParameterExpression><![CDATA[$P{pdateto}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="b8f53eb2-912d-4d3e-84f0-ee2bd72ddc50">
+						<jr:detailCell style="table 1_TD" height="20">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="90" height="20" uuid="061c8440-38e0-4be1-9925-392df19f3b62"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{COUNT(ATTENDANCEDATE)}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table 3" style="table 3" x="111" y="20" width="90" height="20" uuid="693b4013-71ea-4a7f-b39b-04bba3eabaf5"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="PresentDays" uuid="4b033c58-ff99-4b53-acd8-95e8e5d28964">
+						<datasetParameter name="psession">
+							<datasetParameterExpression><![CDATA[$P{psession}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pclass">
+							<datasetParameterExpression><![CDATA[$P{pclass}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="psection">
+							<datasetParameterExpression><![CDATA[$P{psection}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pgrno">
+							<datasetParameterExpression><![CDATA[$P{pgrno}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pdatefrom">
+							<datasetParameterExpression><![CDATA[$P{pdatefrom}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pdateto">
+							<datasetParameterExpression><![CDATA[$P{pdateto}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="b5833ed7-cbb4-4c15-9af8-3845b3d47f37">
+						<jr:detailCell style="table 3_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="992e8783-94ac-4d30-844b-c4ec2e7e7da6"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{COUNT(STATUS)}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="3" y="40" width="67" height="20" uuid="ccee7503-c5c9-4a32-9ef7-64a8d64b6232"/>
+				<text><![CDATA[Absent::]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 4" style="table 4" x="111" y="40" width="90" height="20" uuid="fed4a981-b45b-4fb2-8881-58e470c9bb31"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="AbsentDays" uuid="f5fd7e67-1f06-4865-92a3-1aa7a15cd9fc">
+						<datasetParameter name="psession">
+							<datasetParameterExpression><![CDATA[$P{psession}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pclass">
+							<datasetParameterExpression><![CDATA[$P{pclass}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="psection">
+							<datasetParameterExpression><![CDATA[$P{psection}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pgrno">
+							<datasetParameterExpression><![CDATA[$P{pgrno}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pdatefrom">
+							<datasetParameterExpression><![CDATA[$P{pdatefrom}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pdateto">
+							<datasetParameterExpression><![CDATA[$P{pdateto}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="2077e6e1-1abd-4d9a-a1f5-e55473240685">
+						<jr:detailCell style="table 4_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="f7f27850-cb3a-47e9-ba3e-05df0038f20a"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{COUNT(STATUS)}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="3" y="60" width="67" height="20" uuid="78c2a14d-7dfd-479b-951c-0593cb48d41a"/>
+				<text><![CDATA[Leave:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 5" style="table 5" x="111" y="60" width="90" height="20" uuid="51bf5a64-51f9-42b6-864b-8cc1dcb19538"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="LeaveDays" uuid="e7b0de76-bd93-4f39-956b-512b7d07592b">
+						<datasetParameter name="psession">
+							<datasetParameterExpression><![CDATA[$P{psession}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pclass">
+							<datasetParameterExpression><![CDATA[$P{pclass}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="psection">
+							<datasetParameterExpression><![CDATA[$P{psection}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pgrno">
+							<datasetParameterExpression><![CDATA[$P{pgrno}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pdatefrom">
+							<datasetParameterExpression><![CDATA[$P{pdatefrom}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="pdateto">
+							<datasetParameterExpression><![CDATA[$P{pdateto}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="570cb69e-96a5-4abb-8d40-5cabe91fd6e2">
+						<jr:detailCell style="table 5_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="8b5e487e-a215-4ff6-a31f-a5ab192696a7"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{COUNT(STATUS)}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<line>
+				<reportElement x="1" y="19" width="110" height="1" uuid="170936e4-dad4-46a0-99b8-63fe688cf756"/>
+			</line>
+			<line>
+				<reportElement x="1" y="39" width="110" height="1" uuid="7ce7177e-b98d-4665-b60c-73e138677745"/>
+			</line>
+			<line>
+				<reportElement x="1" y="59" width="110" height="1" uuid="7ad453d3-3d3e-4c31-8916-ad15472a5054"/>
+			</line>
+			<line>
+				<reportElement x="1" y="79" width="110" height="1" uuid="d357656d-4ed3-4812-bc20-bb900b5d28de"/>
+			</line>
+			<staticText>
+				<reportElement x="350" y="19" width="197" height="20" uuid="70693fe3-505b-4382-b147-a205becb29bf"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Class Teacher: ____________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="61" width="179" height="20" uuid="8c7a9cda-8a1c-4783-ad65-3227421c1310"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Principal: ________________]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mytest" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3f54b557-3da6-4757-a25b-622d7bcf60f0">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="479"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="521"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SMS"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Dataset1" uuid="34cea058-47ad-4e9b-9a24-b953d4cef166">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="483"/>
+		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="517"/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SMS"/>
+		<queryString language="SQL">
+			<![CDATA[select firstlatefees from latefees]]>
+		</queryString>
+		<field name="FIRSTLATEFEES" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.name" value="FIRSTLATEFEES"/>
+			<property name="com.jaspersoft.studio.field.label" value="FIRSTLATEFEES"/>
+		</field>
+		<group name="FIRSTLATEFEES">
+			<groupExpression><![CDATA[$F{FIRSTLATEFEES}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[select * from department]]>
+	</queryString>
+	<field name="DEPTID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DEPTID"/>
+		<property name="com.jaspersoft.studio.field.label" value="DEPTID"/>
+	</field>
+	<field name="DEPTNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DEPTNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="DEPTNAME"/>
+	</field>
+	<group name="DEPTID">
+		<groupExpression><![CDATA[$F{DEPTID}]]></groupExpression>
+	</group>
+	<group name="DEPTNAME">
+		<groupExpression><![CDATA[$F{DEPTNAME}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="5" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="4" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="77" y="0" width="100" height="20" uuid="428a95b0-36c5-4d47-8415-9412c270f09b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7816dea0-1bc6-4cbb-98b0-46f5cc105c8f"/>
+				</reportElement>
+				<text><![CDATA[DEPTID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="258" y="0" width="100" height="20" uuid="a0413269-6dca-47d9-85c4-9a9247a45ac5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="529647f5-a060-4190-8f9d-4dfe62fdd5be"/>
+				</reportElement>
+				<text><![CDATA[DEPTNAME]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="252" splitType="Stretch">
+			<textField>
+				<reportElement x="79" y="-3" width="100" height="23" uuid="de3ed73f-a7fe-4dbb-ae6b-3bbdfecf7f35">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7816dea0-1bc6-4cbb-98b0-46f5cc105c8f"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{DEPTID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="0" width="100" height="20" uuid="8166312b-779f-4efd-a842-13f120e202a2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="529647f5-a060-4190-8f9d-4dfe62fdd5be"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{DEPTNAME}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-20" y="20" width="540" height="1" uuid="1e6bd957-0dd5-4cc9-bd3e-7e475cd572f2"/>
+			</line>
+			<componentElement>
+				<reportElement x="0" y="21" width="332" height="25" uuid="04b540b0-8b94-4842-b484-9484ac7dcb9a">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset1" uuid="dc9b54d0-f216-4b4a-9791-1e735f865478">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="200" uuid="4571e87b-91ef-48e5-a7e7-f84d8cda3be5">
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="200" height="30" uuid="f91985bd-b467-4521-8897-81df8e0ec45a"/>
+								<textFieldExpression><![CDATA[$F{FIRSTLATEFEES}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

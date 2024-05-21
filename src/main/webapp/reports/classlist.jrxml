@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name"  pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="987eee7f-b29e-45d2-992d-89006e02ffdd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from masterclass order by classid]]>
+	</queryString>
+	<field name="CLASSID" class="java.lang.String"/>
+	<field name="CLASSNAME" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="139" y="0" width="150" height="35" uuid="8361775c-68f6-44e4-8d5e-408f2ea6b8ac"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[List of Classes]]></text>
+			</staticText>
+			<line>
+				<reportElement x="11" y="28" width="544" height="1" uuid="c9fcb168-2570-43c6-88eb-0722af9c659e"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="49" y="2" width="100" height="20" uuid="a586e24e-611e-4ccf-93f8-70c88ea89f52"/>
+				<text><![CDATA[CLASSID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="2" width="100" height="20" uuid="391efeb8-95a6-4b6b-8125-d43172837d94"/>
+				<text><![CDATA[CLASSNAME]]></text>
+			</staticText>
+			<line>
+				<reportElement x="14" y="23" width="544" height="1" uuid="2b458694-0950-4c83-9704-cc15d0173d0d"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="49" y="7" width="100" height="20" uuid="53479e92-9ea4-40cb-af2c-7d7c75426189"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{CLASSID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="6" width="100" height="20" uuid="8584e57e-6bac-4706-a3bc-718586e13124"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{CLASSNAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="23" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

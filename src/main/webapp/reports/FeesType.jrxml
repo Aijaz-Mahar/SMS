@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name"  pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f23a1ad-45e7-48bc-be72-3df8527f5c63">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from feesType order by feesid]]>
+	</queryString>
+	<field name="FEESID" class="java.lang.String"/>
+	<field name="FEESNAME" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="128" y="0" width="191" height="23" uuid="de1c6a4b-cd41-4224-bbf8-32ccdb8c40a2"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[List of Fees Types]]></text>
+			</staticText>
+			<line>
+				<reportElement x="7" y="29" width="535" height="1" uuid="90b3c612-9ee5-4f72-9655-6123adcbadb0"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="66" y="2" width="100" height="20" uuid="d1d7c0fb-e926-4a90-8f17-4671e5f07208"/>
+				<text><![CDATA[FEESID]]></text>
+			</staticText>
+			<line>
+				<reportElement x="12" y="22" width="528" height="1" uuid="aeb78a34-1072-4d93-8fdb-deabad46dd7c"/>
+			</line>
+			<staticText>
+				<reportElement x="221" y="2" width="100" height="20" uuid="40fef9ac-21e1-4c91-86d1-37ed466b046e"/>
+				<text><![CDATA[FEESNAME]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="66" y="10" width="100" height="20" uuid="802a0b1e-fe81-4769-963d-bea0dc00f970"/>
+				<textFieldExpression><![CDATA[$F{FEESID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="221" y="9" width="100" height="20" uuid="a8d4ca16-1803-4460-af28-8a20e2138a57"/>
+				<textFieldExpression><![CDATA[$F{FEESNAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="36" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

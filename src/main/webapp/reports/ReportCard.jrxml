@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportCard" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d3ec3e1e-2277-4687-8cfb-b0d2f92a2e3c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="psession" class="java.lang.String"/>
+	<parameter name="pclass" class="java.lang.String"/>
+	<parameter name="pgrno" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select a.fullname,a.studentpic, sc.schoolname,sc.logo,s.grno,s.classid,s.sessionyear,s.section,m.examid,m.subjectid,m.obtainmarks,cs.totalmarks
+from student s,marks m,school sc,classsubjects cs,addmissionform a
+where s.grno=m.grno and m.classid=$P{pclass} and m.grno=a.grno
+and sc.sid=m.sid and m.classid=cs.classid and m.sessionyear=$P{psession}
+and m.grno=$P{pgrno}]]>
+	</queryString>
+	<field name="FULLNAME" class="java.lang.String"/>
+	<field name="STUDENTPIC" class="oracle.jdbc.OracleBlob"/>
+	<field name="SCHOOLNAME" class="java.lang.String"/>
+	<field name="LOGO" class="oracle.jdbc.OracleBlob"/>
+	<field name="GRNO" class="java.lang.String"/>
+	<field name="CLASSID" class="java.lang.String"/>
+	<field name="SESSIONYEAR" class="java.lang.String"/>
+	<field name="SECTION" class="java.lang.String"/>
+	<field name="EXAMID" class="java.lang.String"/>
+	<field name="SUBJECTID" class="java.lang.String"/>
+	<field name="OBTAINMARKS" class="java.math.BigDecimal"/>
+	<field name="TOTALMARKS" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="128" splitType="Stretch">
+			<staticText>
+				<reportElement x="287" y="0" width="227" height="20" uuid="b1b5b4d7-ad76-4dc4-8796-174c3db394a1"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Student Progress Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="161" y="20" width="481" height="20" uuid="e6bccc95-7239-42bb-b8a9-00ed97edd7ed"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SCHOOLNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="40" width="81" height="20" uuid="d84cd80c-c8f1-43dd-912d-54a217ea0d41"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{SESSIONYEAR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="78" width="40" height="20" uuid="0a8dad51-7ab5-494c-828f-c753c4d9aefd"/>
+				<text><![CDATA[NAME:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="78" width="247" height="20" uuid="9703445b-06fc-4dd3-a6aa-ad88b2a1cd2b"/>
+				<textFieldExpression><![CDATA[$F{FULLNAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="98" width="40" height="20" uuid="456f6bbd-2d62-4cb0-bf73-29ce01b7ba0f"/>
+				<text><![CDATA[CLASS:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="98" width="100" height="20" uuid="8f7c8115-b867-42f5-93a4-b7d396d0aa9e"/>
+				<textFieldExpression><![CDATA[$F{CLASSID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="558" y="60" width="84" height="20" uuid="a97e043a-ee2f-4672-a872-ab2eb62efbde"/>
+				<text><![CDATA[Marks Obtained:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="558" y="80" width="84" height="20" uuid="3f212141-ccf7-4e5e-bd27-545e26915543"/>
+				<text><![CDATA[Percentage:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="558" y="100" width="84" height="20" uuid="20437b6c-2a47-49be-bd55-aaa8d77cf8f0"/>
+				<text><![CDATA[Total Marks:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="119" width="802" height="1" uuid="041888a3-4385-47b5-bab5-7124afb21b89"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="58" width="40" height="20" uuid="76406aea-3ec8-4f40-9a61-985e8aec7d77"/>
+				<text><![CDATA[GR.NO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="58" width="54" height="20" uuid="329b47e8-8ff1-4bd3-b8f5-1715e1dff593"/>
+				<textFieldExpression><![CDATA[$F{GRNO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="346" y="40" width="45" height="20" uuid="50d97b80-67c9-4152-9aa0-45d5d6fba926"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Session:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="184" splitType="Stretch">
+			<crosstab>
+				<reportElement x="0" y="0" width="802" height="184" uuid="d65f2255-13cd-4f2b-93ae-6c02d392e17e"/>
+				<crosstabHeaderCell>
+					<cellContents>
+						<staticText>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="30" uuid="69bb2ef1-7e2e-415b-a759-03b467f1ce2b"/>
+							<textElement verticalAlignment="Middle">
+								<font isBold="true"/>
+							</textElement>
+							<text><![CDATA[Subject]]></text>
+						</staticText>
+					</cellContents>
+				</crosstabHeaderCell>
+				<rowGroup name="SUBJECTID" width="70">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{SUBJECTID}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" mode="Opaque" x="0" y="0" width="70" height="25" uuid="263c843d-1e28-4ef8-8db9-24c11231c5b7"/>
+								<textFieldExpression><![CDATA[$V{SUBJECTID}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="EXAMID" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{EXAMID}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" mode="Opaque" x="0" y="0" width="50" height="30" uuid="14342b98-05f1-4ae4-ae40-36e2112dd83a"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{EXAMID}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="50" height="30" uuid="1df706be-1ece-48ba-85f0-f10b5537b782"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="OBTAINMARKSMeasure" class="java.math.BigDecimal" calculation="First">
+					<measureExpression><![CDATA[$F{OBTAINMARKS}]]></measureExpression>
+				</measure>
+				<crosstabCell width="50" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="4865241f-3bea-42bb-8deb-cc6dbc2c24b8"/>
+							<textFieldExpression><![CDATA[$V{OBTAINMARKSMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="SUBJECTID">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="2b901418-31a0-4459-bf12-7d6f92d82f4a"/>
+							<textFieldExpression><![CDATA[$V{OBTAINMARKSMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="EXAMID">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" mode="Opaque" x="0" y="0" width="50" height="25" uuid="363ad16f-07ca-4c4c-9916-cb018fed70f2"/>
+							<textFieldExpression><![CDATA[$V{OBTAINMARKSMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="SUBJECTID" columnTotalGroup="EXAMID">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="df7e31eb-512c-4a5c-9acf-cb0c4ddc4077"/>
+							<textFieldExpression><![CDATA[$V{OBTAINMARKSMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>
